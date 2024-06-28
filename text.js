@@ -1,3 +1,3 @@
-const text = "avoc";
+const text = "avoco";
 
 module.exports = text;
