@@ -23,8 +23,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "JBassard97"
+          git config --global user.email "jonathanacciarito@gmail.com"
           
       - name: Show git diff (for debugging)
         run: git diff  # Check if there are changes in the repository
