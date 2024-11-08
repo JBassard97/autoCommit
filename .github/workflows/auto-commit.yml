@@ -6,7 +6,7 @@ on:
     - cron: "0 3 * * *"   # 10:00 PM EST
 
   # Optional: Uncomment the following lines to also allow manual runs
-  # workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   commit-and-push:
