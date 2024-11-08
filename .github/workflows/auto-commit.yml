@@ -3,6 +3,8 @@ name: Auto Commit and Push
 on:
   schedule:
     - cron: "*/30 * * * *"  # Every 30 minutes
+    - cron: "0 15 * * *"     # 10:00 AM EST (3:00 PM UTC)
+    - cron: "0 3 * * *"      # 10:00 PM EST (3:00 AM UTC)
   workflow_dispatch:
 
 jobs:
@@ -23,7 +25,17 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-      - name: Check for Changes and Commit
+      - name: Show git diff (for debugging)
+        run: git diff  # This will show any changes in the repository
+
+      - name: Run the commit script
         run: |
-          # Check if there are any changes to commit
-          git diff --exit-code || (git add . && git commit -m "Automated commit on $(date)" && git push)
+          # Run the autoCommit.js script
+          node autoCommit.js
+
+      - name: Force commit if there are changes
+        run: |
+          # Force a commit even if there are no changes detected
+          git add .
+          git commit -m "Automated commit on $(date)" || echo "No changes to commit"
+          git push
