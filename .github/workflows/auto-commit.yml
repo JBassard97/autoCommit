@@ -7,6 +7,9 @@ on:
     - cron: "0 3 * * *"      # 10:00 PM EST (3:00 AM UTC)
   workflow_dispatch:
 
+permissions:
+  contents: write  # Allow write permissions for commit and push
+
 jobs:
   commit-and-push:
     runs-on: ubuntu-latest
