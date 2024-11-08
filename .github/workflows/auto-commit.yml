@@ -3,12 +3,10 @@ name: Auto Commit and Push
 on:
   schedule:
     - cron: "*/30 * * * *"  # Every 30 minutes
-    - cron: "0 15 * * *"     # 10:00 AM EST (3:00 PM UTC)
-    - cron: "0 3 * * *"      # 10:00 PM EST (3:00 AM UTC)
   workflow_dispatch:
 
 permissions:
-  contents: write  # Allow write permissions for commit and push
+  contents: write  # Ensure it has write permissions to commit and push
 
 jobs:
   commit-and-push:
@@ -20,8 +18,8 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
-        with: 
-            node-version: '18'
+        with:
+          node-version: '18'
 
       - name: Configure Git
         run: |
@@ -29,7 +27,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
       - name: Show git diff (for debugging)
-        run: git diff  # This will show any changes in the repository
+        run: git diff  # Check if there are changes in the repository
 
       - name: Run the commit script
         run: |
@@ -41,4 +39,5 @@ jobs:
           # Force a commit even if there are no changes detected
           git add .
           git commit -m "Automated commit on $(date)" || echo "No changes to commit"
+          git remote set-url origin https://$GITHUB_TOKEN@github.com/JBassard97/autoCommit.git
           git push
