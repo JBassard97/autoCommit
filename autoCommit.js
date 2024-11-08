@@ -14,7 +14,10 @@ function getRandomLetter() {
 const textFilePath = path.join(__dirname, "text.js");
 
 // Read the current content of text.js
-let currentText = require(textFilePath);
+let currentText = fs
+  .readFileSync(textFilePath, "utf8")
+  .replace('const text = "', "")
+  .replace('";\n\nmodule.exports = text;\n', "");
 
 // Add a random letter to the text
 const randomLetter = getRandomLetter();

@@ -1,0 +1,33 @@
+name: Auto Commit and Push
+
+on:
+  schedule:
+    - cron: "0 15 * * *"  # 10:00 AM EST
+    - cron: "0 3 * * *"   # 10:00 PM EST
+
+  # Optional: Uncomment the following lines to also allow manual runs
+  # workflow_dispatch:
+
+jobs:
+  commit-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with: 
+            node-version: '18'
+
+      - name: Run the commit script
+        run: node autoCommit.js 
+
+      - name: Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Automated commit from GitHub Actions"
+          git push
