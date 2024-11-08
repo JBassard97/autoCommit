@@ -42,7 +42,7 @@ try {
   execSync("git add .", { stdio: "inherit" });
 
   // Commit changes with a unique message
-  execSync(`git commit -m "Automated commit on ${currentDate}"`, {
+  execSync(`git commit -m "Auto commit on ${currentDate}"`, {
     stdio: "inherit",
   });
 
