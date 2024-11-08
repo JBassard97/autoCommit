@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with: 
-            node-version: '18'
+            node-version: '20'
 
       - name: Run the commit script
         run: node autoCommit.js 
@@ -30,4 +30,4 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Automated commit from GitHub Actions"
-          git push
+          git push origin main
