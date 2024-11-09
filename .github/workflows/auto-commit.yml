@@ -25,18 +25,13 @@ jobs:
         run: |
           git config --global user.name "JBassard97"
           git config --global user.email "jonathanacciarito@gmail.com"
-          
-      - name: Show git diff (for debugging)
-        run: git diff  # Check if there are changes in the repository
 
-      - name: Run the commit script
+      - name: Run the textChange.js Script
         run: |
-          # Run the autoCommit.js script
-          node autoCommit.js
+          node textChange.js
 
-      - name: Force commit if there are changes
+      - name: Commit and Push Changes
         run: |
-          # Force a commit even if there are no changes detected
           git add .
           git commit -m "Automated commit on $(date)" || echo "No changes to commit"
           git remote set-url origin https://$GITHUB_TOKEN@github.com/JBassard97/autoCommit.git

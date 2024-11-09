@@ -1,3 +1,4 @@
-const text = "avocodztknycfobkpwxgcengfzniusmeinftynrludzysgcwqorudzttqgnylxdtlfxwkzxggwlinimmnfobgnafrxptdtjzfwceuhnqxlboltiswumifupxihkeiix";
+const text =
+  "avocodztknycfobkpwxgcengfzniusmeinftynrludzysgcwqorudzttqgnylxdtlfxwkzxggwlinimmnfobgnafrxptdtjzfwceuhnqxlboltiswumifupxihkeiix";
 
 module.exports = text;
