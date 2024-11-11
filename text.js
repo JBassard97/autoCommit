@@ -1,3 +1,3 @@
-const text = "wa";
+const text = "waj";
 
 module.exports = text;
